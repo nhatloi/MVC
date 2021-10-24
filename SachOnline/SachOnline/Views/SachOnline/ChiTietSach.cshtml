@@ -1,0 +1,32 @@
+﻿@model IEnumerable<SachOnline.Models.SACH>
+
+
+    @{ 
+        var sach = Model.Single();
+    }
+<div style="text-align:center;">
+    <p>
+        @sach.TenSach
+    </p>
+    <div>
+        <img style=" box-shadow: 20px 20px 50px grey; " alt="@sach.TenSach" src="~/Images/@sach.AnhBia" />
+    </div>
+    <div style="text-align:left;margin-top:30px;line-height:2.5">
+        @Html.Raw(sach.MoTa.ToString().Replace("\n", "<br>"))
+    </div>
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="font-weight:bold; line-height:2.5">
+            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                Ngày cập nhật: @Html.FormatValue(sach.NgayCapNhat, "{0:dd/MM/yyyy}")<p />
+                Giá bán: <span style="color:blue;font-size:20px">@Html.FormatValue(sach.GiaBan, "{0:#,##0}") VNĐ</span><p />
+                <a href="@Url.Action("ThemGioHang","GioHang",new {ms = sach.MaSach,url =Request.Url.ToString() })" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Add to Cart</a>
+            </div>
+           
+        </div>
+   
+        
+
+
+    </div>
